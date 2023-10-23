@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TG_API_KEY = os.getenv('BOT_API_KEY')
-whook = 'https://38ca3eeff94f28.lhr.life'
+whook = 'https://b3367b0576551c.lhr.life'
 
 r = requests.get(f'https://api.telegram.org/bot{TG_API_KEY}/setWebhook?url={whook}/')
 
