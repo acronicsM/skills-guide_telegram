@@ -1,6 +1,6 @@
 from aiogram.types import Message
 
-from core import settings
+from settings import Settings
 from .new_vacancies import get_new_vacancies
 from ..keyboards.inline import get_inline_keyboard
 
@@ -11,7 +11,7 @@ async def get_start(message: Message):
 
 
 async def get_help(message: Message):
-    text = '\n'.join(f'/{k} \- {v["description"]}' for k, v in settings.COMMANDS.items())
+    text = '\n'.join(f'/{k} \- {v["description"]}' for k, v in Settings.COMMANDS.items())
     await message.answer(text=f'Команды:\n{text}')
 
 

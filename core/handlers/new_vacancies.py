@@ -4,14 +4,14 @@ import aiohttp
 from aiogram.utils.formatting import Text
 from aiogram.utils.markdown import link, bold
 
-from core import settings
+from settings import Settings
 
 
 async def get_new_vacancies():
     params = {'new_vacancies': 'True'}
 
     async with aiohttp.ClientSession() as session:
-        async with session.get(f'{settings.SERVER_PARSE}/vacancies', params=params) as response:
+        async with session.get(f'{Settings.SERVER_PARSE}/vacancies', params=params) as response:
             answer = await response.json()
 
             return [vacancy_to_tuple(i) for i in answer['result']]

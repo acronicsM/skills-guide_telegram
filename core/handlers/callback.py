@@ -14,17 +14,5 @@ async def select_letter(call: CallbackQuery, bot: Bot, callback_data: VacancyCal
     elif _type == 'interview':
         answer = f'Тестовое собеседование для вакансии {_id}'
 
-
-    # _, _id = call.data.split('_')
-    # answer = f'Сопроводительное письмо для вакансии {_id}'
-    #
-    await call.message.answer(answer)
-    await call.answer()
-
-
-async def select_interview(call: CallbackQuery, bot: Bot):
-    _, _id = call.data.split('_')
-    answer = f'Тестовое собеседование для вакансии {_id}'
-
     await call.message.answer(answer)
     await call.answer()
