@@ -1,8 +1,10 @@
 from aiogram.types import Message
+from aiogram.fsm.context import FSMContext
 
 from settings import Settings
-from .new_vacancies import get_new_vacancies
-from ..keyboards.inline import get_inline_keyboard
+from ..parser.new_vacancies import get_new_vacancies
+from ..keyboards.inline import get_inline_keyboard, get_gpt_keyboard
+from ..utils.state import StepsVacancyID
 
 
 async def get_start(message: Message):
@@ -24,9 +26,17 @@ async def new_vacancies(message: Message):
                              )
 
 
-async def letter(message: Message):
-    await message.answer(text='Сопроводительное письмо')
+async def letter(message: Message, state: FSMContext):
+    await message.answer(text='Укажите id вакансии для которой нужно написать сопроводительное письмо')
+    await state.set_state(StepsVacancyID.GET_VacancyID)
 
 
 async def interview(message: Message):
     await message.answer(text='Тестовое собеседование')
+
+
+async def get_vacancy_id(message: Message, state: FSMContext):
+    await message.answer(text='Выберите GPT провайдера',
+                         reply_markup=get_gpt_keyboard(message.text, 'letter'),
+                         )
+    await state.clear()
