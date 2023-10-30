@@ -1,10 +1,11 @@
-import re
-
 import aiohttp
+
 from aiogram.utils.formatting import Text
 from aiogram.utils.markdown import link, bold
 
 from settings import Settings
+
+from ..utils.vacancies_utils import remove_html_tags
 
 
 async def get_new_vacancies():
@@ -35,8 +36,3 @@ def vacancy_to_text(_id: int, name: str, url: str, requirement: str, salary_from
 
 def formatted_salary(salary: float, prefix: str) -> str:
     return f'{prefix} {int(salary):_} ₽'.replace('_', ' ') if salary > 0 else ''
-
-
-def remove_html_tags(text):
-    clean = re.compile('<.*?>')
-    return re.sub(clean, '', text)
