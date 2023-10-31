@@ -1,3 +1,7 @@
 requests~=2.31.0
 python-dotenv~=1.0.0
 aiogram~=3.1.1
+aiohttp~=3.8.6
+sqlalchemy[asyncio]
+asyncpg
+apscheduler

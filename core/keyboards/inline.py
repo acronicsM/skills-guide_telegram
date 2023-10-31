@@ -28,17 +28,13 @@ def get_gpt_keyboard(_id, _type):
     return builder.as_markup()
 
 
-def get_interview_keyboard(gpt, question):
+def get_interview_keyboard(gpt, with_answer=True):
     builder = InlineKeyboardBuilder()
-    builder.button(text='Ответ', callback_data=InterviewAnswer(gpt_provider=gpt,
-                                                               question=question,
-                                                               ),
-                   )
 
-    # builder.button(text='Еще', callback_data=GPT(gpt_provider='openai',
-    #                                              vacancy_type=_type,
-    #                                              vacancy_id=_id,
-    #                                              ),
-    #                )
+    if with_answer:
+        builder.button(text='🔑 Ответ', callback_data=InterviewAnswer(gpt_provider=gpt, answer=True, exit=False))
+
+    builder.button(text='🧰 Еще', callback_data=InterviewAnswer(gpt_provider=gpt, answer=False, exit=False))
+    builder.button(text='❌ Хватит', callback_data=InterviewAnswer(gpt_provider=gpt, answer=False, exit=True))
 
     return builder.as_markup()

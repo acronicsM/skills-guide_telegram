@@ -1,6 +1,4 @@
-import enum
-
-from aiogram.filters.callback_data import (CallbackData)
+from aiogram.filters.callback_data import CallbackData
 
 
 class VacancyCall(CallbackData, prefix='vacancy'):
@@ -16,4 +14,5 @@ class GPT(CallbackData, prefix='gpt'):
 
 class InterviewAnswer(CallbackData, prefix='interview'):
     gpt_provider: str
-    question: str
+    answer: bool
+    exit: bool
