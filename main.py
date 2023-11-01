@@ -20,8 +20,8 @@ async def app():
 
     sheduler = AsyncIOScheduler(timezone='Europe/Moscow')
     sheduler.add_job(apsched.send_new_vacancies_cron,
-                     trigger='interval',
-                     seconds=60,
+                     trigger=Settings.NEW_VACANCIES_CRON_TRIGGER,
+                     seconds=Settings.NEW_VACANCIES_CRON_PERIOD,
                      kwargs={'bot': bot})
     sheduler.start()
 

@@ -1,5 +1,6 @@
-import aiohttp
+from datetime import datetime
 
+import aiohttp
 from aiogram.utils.formatting import Text
 from aiogram.utils.markdown import link, bold
 
@@ -8,8 +9,12 @@ from settings import Settings
 from ..utils.vacancies_utils import remove_html_tags
 
 
-async def get_new_vacancies():
-    params = {'new_vacancies': 'True'}
+async def get_new_vacancies(date_new=datetime.now()):
+
+    params = {
+        'new_vacancies': 'True',
+        'date_new': date_new.isoformat(),
+    }
 
     async with aiohttp.ClientSession() as session:
         async with session.get(f'{Settings.SERVER_PARSE}/vacancies', params=params) as response:

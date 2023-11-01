@@ -5,7 +5,7 @@ from aiogram.utils.formatting import Text
 from ..parser.new_vacancies import get_new_vacancies
 from ..keyboards.inline import get_inline_keyboard, get_gpt_keyboard
 from ..utils.state import StepsVacancyID
-from ..utils.create_db import add_subscriber, remove_subscriber, all_subscribers
+from ..utils.create_db import add_subscriber, remove_subscriber
 
 
 async def get_start(message: Message):
@@ -35,7 +35,6 @@ async def new_vacancies(message: Message):
                                  disable_web_page_preview=True,
                                  reply_markup=get_inline_keyboard(_id),
                                  )
-
     else:
         await message.answer(text='Пока новых вакансий нет')
 
