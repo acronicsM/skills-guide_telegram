@@ -5,3 +5,5 @@ aiohttp~=3.8.6
 sqlalchemy[asyncio]
 asyncpg
 apscheduler
+yarl
+frozenlist
