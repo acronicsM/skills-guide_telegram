@@ -14,7 +14,8 @@ class Subscriber(Base):
 
 
 async def create():
-    engine = create_async_engine(url=Settings.DATABASE_URL, echo=True)
+    db_url = f'postgresql+asyncpg://{Settings.POSTGRES_USER}:{Settings.POSTGRES_PASSWORD}@{Settings.POSTGRES_HOST}:{Settings.POSTGRES_PORT}/{Settings.POSTGRES_DATABASE}'
+    engine = create_async_engine(url=db_url, echo=True)
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)

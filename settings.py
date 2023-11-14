@@ -12,5 +12,11 @@ class Settings:
     NEW_VACANCIES_CRON_TRIGGER = os.getenv('NEW_VACANCIES_CRON_TRIGGER', default='interval')
     NEW_VACANCIES_CRON_PERIOD = int(os.getenv('NEW_VACANCIES_CRON_PERIOD', default=60))
 
-    SERVER_PARSE = 'http://127.0.0.1:5000'
-    SERVER_GPT = 'http://127.0.0.1:7000'
+    SERVER_PARSE = os.getenv('SERVER_PARSE')
+    SERVER_GPT = os.getenv('SERVER_GPT')
+
+    POSTGRES_DATABASE = os.getenv('POSTGRES_DATABASE')
+    POSTGRES_USER = os.getenv('POSTGRES_USER')
+    POSTGRES_PASSWORD = os.getenv('POSTGRES_PASSWORD')
+    POSTGRES_PORT = os.getenv('POSTGRES_PORT')
+    POSTGRES_HOST = os.getenv('POSTGRES_HOST')
