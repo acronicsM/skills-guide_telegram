@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import aiohttp
 from aiogram.utils.formatting import Text
@@ -9,7 +9,9 @@ from settings import Settings
 from ..utils.vacancies_utils import remove_html_tags
 
 
-async def get_new_vacancies(date_new=datetime.now()):
+async def get_new_vacancies(date_new=None):
+    if not date_new:
+        date_new = datetime.now() - timedelta(seconds=86400)
 
     params = {
         'new_vacancies': 'True',
