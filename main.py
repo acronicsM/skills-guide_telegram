@@ -4,10 +4,10 @@ import logging
 from aiogram import Bot, Dispatcher
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-
 from settings import Settings
 from core.register import routers
 from core.handlers import apsched
+
 
 async def app():
     logging.basicConfig(level=logging.DEBUG,
